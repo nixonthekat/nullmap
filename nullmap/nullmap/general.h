@@ -6,6 +6,8 @@
 #include <winddi.h>
 #include <SubAuth.h>
 #include <ioringapi.h>
+#include <tlhelp32.h>
+#include <sddl.h>
 
 #include "console.h"
 #include "utils.h"
