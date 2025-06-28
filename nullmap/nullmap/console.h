@@ -1,28 +1,20 @@
-#pragma once
+#ifndef _CONSOLE_H_
+#define _CONSOLE_H_
 
-enum ConsoleColor
-{
-	Default,
-	DarkBlue,
-	DarkGreen,
-	DarkCyan,
-	DarkRed,
-	DarkPurple,
-	DarkYellow,
-	DarkWhite,
-	DarkGrey,
-	DarkBlueLite,
-	Green,
-	Cyan,
-	Red,
-	Purple,
-	Yellow,
-	White
-};
+#include "nt_types.h"
 
-void ConsoleBase(enum ConsoleColor color, const char* prefix, const char* text, va_list args);
-void ConsoleInfo(const char* text, ...);
-void ConsoleWarning(const char* text, ...);
-void ConsoleError(const char* text, ...);
-void ConsoleSuccess(const char* text, ...);
+// Console initialization
+void ConsoleInit(void);
+
+// Console output functions
+void ConsoleSetColor(CONSOLE_COLOR color);
+void ConsoleResetColor(void);
+void ConsoleInfo(const char* format, ...);
+void ConsoleSuccess(const char* format, ...);
+void ConsoleError(const char* format, ...);
+void ConsoleWarning(const char* format, ...);
+void ConsoleDebug(const char* format, ...);
+void ConsoleStatus(const char* format, ...);
 void ConsoleTitle(const char* name);
+
+#endif // _CONSOLE_H_

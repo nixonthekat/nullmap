@@ -1,4 +1,24 @@
+#define WIN32_LEAN_AND_MEAN
+#include <Windows.h>
+#include <winternl.h>
+#include <stdlib.h>
 #include "general.h"
+#include "hyperv_exploit.h"
+
+// NT Types
+typedef struct _SYSTEM_HANDLE {
+	ULONG UniqueProcessId;
+	BYTE ObjectTypeNumber;
+	BYTE Flags;
+	USHORT HandleValue;
+	PVOID Object;
+	ACCESS_MASK GrantedAccess;
+} SYSTEM_HANDLE, *PSYSTEM_HANDLE;
+
+typedef struct _SYSTEM_HANDLE_INFORMATION {
+	ULONG NumberOfHandles;
+	SYSTEM_HANDLE Handles[1];
+} SYSTEM_HANDLE_INFORMATION, *PSYSTEM_HANDLE_INFORMATION;
 
 PVOID UtilsReadFile(const char* path, SIZE_T* fileSize)
 {
